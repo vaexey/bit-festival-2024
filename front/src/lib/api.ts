@@ -17,3 +17,8 @@ export const send_answer = async (session : string, content : string, questions_
 	questions_obj.questions = questions;
 	questions_obj.curr_question = curr_question;
 };
+
+export const get_results = async (session : string) => {
+	let res = await fetch(`/api/results?session=${session}`);
+	let results = await res.text();
+}

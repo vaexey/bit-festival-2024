@@ -8,6 +8,10 @@
     import { onMount } from 'svelte';
     import { type QuestionModel } from '$lib/question'
     import { new_session, get_questions } from '$lib/api';
+    type Result = {
+        result : string,
+        accuracy : number
+    };
 
     const send_answer = async (session : string, content : string) => {
         curr_question = "Loading...";
@@ -16,10 +20,18 @@
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     };
 
+    export const get_results = async (session : string) => {
+        let res = await fetch(`/api/results?session=${session}`);
+        let results = JSON.parse(await res.text()).map((obj : Result) => obj.result);
+        let len = Math.min(3, results.length);
+        questionResults = results.slice(0, len);
+    }
+
     let questions : QuestionModel[] = $state([]);
     let curr_question : string = $state('');
     let session : string = $state('');
     let content = $state('');
+    let questionResults : string[] = $state([]);
 
 
     onMount(async () => {
@@ -29,10 +41,6 @@
         questions = await get_questions(session);
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     });
-
-    //const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
-    //let iterations = $state(questions.length > 0 ? questions[questions.length - 1].shortOptions : []);
-    let questionResults : string[] = [];
 
 </script>
 
@@ -64,7 +72,9 @@
         content={content}
         bind:questions={questions}
         bind:curr_question={curr_question}/>
-    <FinishButton/>
+    <FinishButton 
+        callback={get_results}
+        session={session}/>
     {:else}
     <Reply {questionResults}/>
     <ContinueButton/>

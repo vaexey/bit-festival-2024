@@ -13,5 +13,5 @@
 
 </script>
 
-<button class="tile-button" on:click={
-        () => callback(session, iteration, questions, curr_question)}>{iteration}</button>
+<div class="tile-button" on:click={
+        () => callback(session, iteration, questions, curr_question)}>{iteration}</div>

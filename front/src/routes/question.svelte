@@ -2,6 +2,6 @@
     @import './styles/question.scss'
 </style>
 
-<h1>
+<div class="question-container">
     Question here
-</h1>
+</div>

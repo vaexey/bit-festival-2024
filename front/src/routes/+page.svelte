@@ -7,7 +7,7 @@
     @import './styles/styles.scss'
 </style>
 
-<div>
+<div class="main">
     <Question/>
     <Answer/>
 </div>

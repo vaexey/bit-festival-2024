@@ -1,8 +1,13 @@
 <script>
-let franzl = "ben";
+    import Answer from './answer.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<p> witam {franzl}</p>
+<div>
+    <Answer/>
+</div>
 
+<!-- {#if franzl} -->
+<!--     <p>"ben"</p> -->
+<!-- {:else} -->
+<!--     <p> jodler</p> -->
+<!-- {/if} -->

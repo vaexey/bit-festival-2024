@@ -1,6 +1,6 @@
-.answer {
-    background-color: red;
-    &:hover {
-        background-color: blue;
-    }
+.answer-container {
+    border: 2px solid red;
+    text-align: center;
+    font-size : 40px;
+    padding : 10px;
 }

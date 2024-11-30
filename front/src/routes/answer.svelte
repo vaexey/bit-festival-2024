@@ -12,6 +12,7 @@
     bind:value={value}
     class="answ-input">
     </textarea>
+    <button class="answ-button">➤</button>
 </div>
 
 

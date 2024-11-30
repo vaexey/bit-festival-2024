@@ -34,11 +34,20 @@ export class HobbySession
         let inner = optionsRaw.split("[")[1].split("]")[0]
         let options = inner.split(";").map(x => x.trim())
 
+        let shortOptions = await Promise.all(options.map(o => {
+            if(o.split(" ").length > 3)
+            {
+                return this.llm.ask(Prompts.shortcutFrom(o))
+            }
+
+            return o
+        }))
+
         this.questions.push({
             stage: "ASKED",
             question,
             options,
-            shortOptions: options
+            shortOptions
         })
     }
 
@@ -63,8 +72,24 @@ export class HobbySession
             throw `Cant rate question of stage ${last.stage}`
 
         last.result = await this.llm.ask(Prompts.hobbyFor(this.questions))
-        last.accuracy = 0.1
 
+        const accuracyRaw = await this.llm.ask(Prompts.hobbyRating(this.questions, last.result))
+
+        let accuracy = +accuracyRaw.trim()
+
+        if(isNaN(accuracy))
+        {
+            console.warn(`NaN accuracy from: ${accuracyRaw}`)
+
+            accuracy = 0
+        }
+
+        const trustFactor = 1-Math.exp(-0.2*this.questions.length)
+
+        accuracy /= 100
+        accuracy *= trustFactor
+
+        last.accuracy = accuracy
         last.stage = "RATED"
 
         // if(last.accuracy > 0)
@@ -72,5 +97,21 @@ export class HobbySession
 
         // }
         await this.loadNextQuestion();
+    }
+
+    getBestResults(): { result: string, accuracy: number }[]
+    {
+        let results = this.questions
+            .filter(q => q.stage == "RATED")
+            .map(q => {
+                return {
+                    result: q.result,
+                    accuracy: q.accuracy
+                }
+            })
+
+        results.sort((a,b) => b.accuracy - a.accuracy)
+
+        return results
     }
 }

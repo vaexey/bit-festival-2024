@@ -1,7 +1,10 @@
 <script lang="ts">
+    import FinishButton from './finishButton.svelte';
+    import AnswerTile from './answerTile.svelte';
+    import Reply from './reply.svelte';
+    import ContinueButton from './keepAskingButton.svelte';
     import Answer from './answer.svelte';
     import Question from './question.svelte';
-    import Button from './finishButton.svelte';
     import { onMount } from 'svelte';
     import { type QuestionModel } from '$lib/question'
     import { new_session, get_questions } from '$lib/api';
@@ -26,6 +29,8 @@
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     });
 
+    const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
+    let questionResults : string[] =[];
 
 </script>
 
@@ -34,17 +39,24 @@
 </style>
 
 <div class="main">
+    {#if questionResults.length === 0}
     <Question bind:text={curr_question}/>
-
+    <div class="tiles-container" data-length={iterations.length}>
+        {#each iterations as iteration}
+        <AnswerTile iteration={iteration}/>
+        {/each}
+    </div>
     <Answer bind:value={content}/>
-
-    <Button 
+    <FinishButton 
     callback={send_answer}
     session={session} 
     content={content}
     bind:questions={questions}
     bind:curr_question={curr_question}
     />
-
+    {:else}
+    <Reply {questionResults}/>
+    <ContinueButton/>
+    {/if}
 </div>
 

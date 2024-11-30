@@ -20,6 +20,13 @@ export class HobbySession
         await this.addQuestion(question)
     }
 
+    async loadNextQuestion()
+    {
+        let question
+
+        await this.addQuestion(question)
+    }
+
     async addQuestion(question: string)
     {
         let optionsRaw = await this.llm.ask(Prompts.optionsFor(question))
@@ -53,11 +60,15 @@ export class HobbySession
         if(last.stage != "ANSWERED")
             throw `Cant answer question of stage ${last.stage}`
 
-        last.result = "ben"
+        last.result = await this.llm.ask(Prompts.hobbyFor(this.questions))
         last.accuracy = 0.1
 
         last.stage = "RATED"
 
         // if(last.accuracy > 0)
+        // {
+
+        // }
+        // await this.loadNextQuestion();
     }
 }

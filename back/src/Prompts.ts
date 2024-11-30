@@ -9,6 +9,12 @@ export class Prompts
         return `Prepare from 2 to 8 most common answers for this question: "${question}". Answers should not be longer than one sentence and should not be longer than 6 words. Provide answers from all the spectrum. There should be at least two contradicting answers. Your response should contain only answers contained in square brackets separated by semicolons.`
     }
 
+    static shortcutFrom(phrase: string): string
+    {
+        return `Extract the most important word from the phrase below. Respond only with the selected word.`
+            + `"${phrase}"`
+    }
+
     static hobbyFor(questions: Question[])
     {
         return `Return a hobby that suits the best a person that responded to the questions below. Your response should contain only the hobby name and nothing else. \r\n`

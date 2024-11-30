@@ -34,11 +34,20 @@ export class HobbySession
         let inner = optionsRaw.split("[")[1].split("]")[0]
         let options = inner.split(";").map(x => x.trim())
 
+        let shortOptions = await Promise.all(options.map(o => {
+            if(o.split(" ").length > 3)
+            {
+                return this.llm.ask(Prompts.shortcutFrom(o))
+            }
+
+            return o
+        }))
+
         this.questions.push({
             stage: "ASKED",
             question,
             options,
-            shortOptions: options
+            shortOptions
         })
     }
 

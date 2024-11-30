@@ -46,7 +46,13 @@
 
     <div class="tiles-container" data-length={questions[questions.length - 1].shortOptions.length}>
             {#each questions[questions.length - 1].shortOptions as iteration}
-                <AnswerTile iteration={iteration}/>
+                <AnswerTile 
+                iteration={iteration}
+                callback={send_answer}
+                session={session}
+                bind:questions={questions}
+                bind:curr_questions={curr_question}
+                />
             {/each}
     </div>
     {/if}

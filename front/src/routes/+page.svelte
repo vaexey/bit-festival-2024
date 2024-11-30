@@ -11,6 +11,7 @@
     import Spinner from './spinner.svelte';
 
     const send_answer = async (session : string, content : string) => {
+        curr_question = "Loading...";
         await fetch(`api/answer?session=${session}&content=${content}`);
         questions = await get_questions(session);
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
@@ -31,8 +32,9 @@
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     });
 
-    const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
-    let questionResults : string[] =[];
+    //const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
+    //let iterations = $state(questions.length > 0 ? questions[questions.length - 1].shortOptions : []);
+    let questionResults : string[] = [];
 
 </script>
 
@@ -43,13 +45,14 @@
 <div class="main">
     {#if questionResults.length === 0}
     <Question bind:text={curr_question}/>
-    <div class="tiles-container" data-length={iterations.length}>
-        {#each iterations as iteration}
-        <AnswerTile 
-        iteration={iteration}        
-        />
-        {/each}
+    {#if questions.length > 0 && questions[questions.length - 1].shortOptions !== undefined}
+
+    <div class="tiles-container" data-length={questions[questions.length - 1].shortOptions.length}>
+            {#each questions[questions.length - 1].shortOptions as iteration}
+                <AnswerTile iteration={iteration}/>
+            {/each}
     </div>
+    {/if}
     <Answer 
         bind:value={content} 
         callback={send_answer}

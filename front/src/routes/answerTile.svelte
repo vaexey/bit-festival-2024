@@ -2,8 +2,9 @@
     @import './styles/answerTile.scss'
 </style>
 
-<script>
+<script>    
     export let iteration; 
+
 </script>
 
 <button class="tile-button">{iteration}</button>

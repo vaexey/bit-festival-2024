@@ -15,6 +15,11 @@ export class Prompts
             + `"${phrase}"`
     }
 
+    static emojiFrom(phrase: string): string
+    {
+        return `Give me an emoji that best suits phrase "${phrase}". Respond only with the emoji.`
+    }
+
     static hobbyFor(questions: Question[])
     {
         return `Return a hobby that suits the best a person that responded to the questions below. Your response should contain only the hobby name and nothing else. \r\n`

@@ -6,12 +6,11 @@
     export let session;
 
     export let questions : QuestionModel[] = [];
-    export let curr_question : string;
+    export let curr_question : string ;
 </script>
 
 <style lang="scss">
     @import './styles/answer.scss';
-
 </style>
 
 <div class="answer-container">

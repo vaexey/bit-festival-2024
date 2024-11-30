@@ -10,6 +10,7 @@
     import { new_session, get_questions } from '$lib/api';
 
     const send_answer = async (session : string, content : string) => {
+        curr_question = "Loading...";
         await fetch(`api/answer?session=${session}&content=${content}`);
         questions = await get_questions(session);
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";

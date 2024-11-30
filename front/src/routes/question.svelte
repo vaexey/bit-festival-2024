@@ -2,6 +2,10 @@
     @import './styles/question.scss'
 </style>
 
+<script>
+    export let text;
+</script>
+
 <div class="question-container">
-    Question here
+    {text}
 </div>

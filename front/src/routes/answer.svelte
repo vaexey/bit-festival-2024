@@ -1,11 +1,17 @@
-<div class="answer-container">
-    <textarea class="answ-input">
-    </textarea>
-</div>
+<script>
+    export let value = '';
+</script>
 
 <style lang="scss">
     @import './styles/answer.scss';
+
 </style>
 
+<div class="answer-container">
+    <textarea 
+    bind:value={value}
+    class="answ-input">
+    </textarea>
+</div>
 
 

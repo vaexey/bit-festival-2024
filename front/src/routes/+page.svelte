@@ -7,7 +7,7 @@
     import ContinueButton from './keepAskingButton.svelte';
 
     const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
-    let questionResults =["siema","czesc"];
+    let questionResults =[];
 </script>
 
 <style lang="scss">

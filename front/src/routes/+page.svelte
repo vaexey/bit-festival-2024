@@ -1,4 +1,5 @@
 <script>
+    import Answer from './answer.svelte';
     import Question from './question.svelte'
 </script>
 
@@ -8,4 +9,5 @@
 
 <div class="main">
     <Question/>
+    <Answer/>
 </div>

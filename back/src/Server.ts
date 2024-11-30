@@ -33,7 +33,7 @@ export class Server
             next()
         })
 
-        this.app.get("/newSession", async (req: SesRes, res) => {
+        this.app.get("/api/newSession", async (req: SesRes, res) => {
             const id = (++this.sessionIncr)+""
 
             const newSession = new HobbySession(
@@ -45,10 +45,10 @@ export class Server
 
             await newSession.loadFirstQuestion()
 
-            res.redirect(`/q?session=${id}`)
+            res.redirect(`/api/questions?session=${id}`)
         })
 
-        this.app.get("/questions", async (req: SesRes, res) => {
+        this.app.get("/api/questions", async (req: SesRes, res) => {
             if(!req.session)
             {
                 res.sendStatus(401);
@@ -60,7 +60,7 @@ export class Server
             res.end();
         })
 
-        this.app.get("/answer", async (req: SesRes, res) => {
+        this.app.get("/api/answer", async (req: SesRes, res) => {
             if(!req.session)
             {
                 res.sendStatus(401);

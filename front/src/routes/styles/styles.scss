@@ -11,6 +11,8 @@
         margin: 0;
 
         height: 100vh;
+
+        user-select: none;
     }
 }
 
@@ -88,7 +90,7 @@
 }
 
 .tiles-container[data-length="8"] {
-    display: block;    
+    display: flex;    
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     gap: 10px;

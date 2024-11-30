@@ -6,7 +6,7 @@ export class Prompts
 
     static optionsFor(question: string): string
     {
-        return `Prepare from 2 to 9 most common answers for this question: "${question}". Answers should not be longer than one sentence and should not be longer than 6 words. Provide answers from all the spectrum. There should be at least two contradicting answers. Your response should contain only answers contained in square brackets separated by semicolons.`
+        return `Prepare from 2 to 8 most common answers for this question: "${question}". Answers should not be longer than one sentence and should not be longer than 6 words. Provide answers from all the spectrum. There should be at least two contradicting answers. Your response should contain only answers contained in square brackets separated by semicolons.`
     }
 
     static hobbyFor(questions: Question[])

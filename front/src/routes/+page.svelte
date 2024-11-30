@@ -7,5 +7,5 @@
 </style>
 
 <div class="main">
-    <Question></Question>
+    <Question/>
 </div>

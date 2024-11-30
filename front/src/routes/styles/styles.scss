@@ -1,3 +1,18 @@
-h1 {
-    background-color: red;
+:global {
+    body {
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: (rgb(222, 219, 8));
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid blue;
+    width: 97vw;
+    height: 97vh;
+    margin: auto;
 }

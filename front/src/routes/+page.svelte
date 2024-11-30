@@ -27,10 +27,10 @@
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     };
     const reset = async () => {
-        spinner = true;
+        // spinner = true;
         questionResults = [];
-        questions = await get_questions(session);
-        curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
+        // questions = await get_questions(session);
+        // curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     }
 
     export const get_results = async (session : string) => {

@@ -29,7 +29,7 @@ export class HobbySession
 
     async addQuestion(question: string)
     {
-        let sentences = question.split(/[\.:]+/)
+        let sentences = question.split(/[\.:!]+/)
 
         if(sentences.length > 1)
         {

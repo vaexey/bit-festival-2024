@@ -12,12 +12,25 @@ export class Prompts
     static hobbyFor(questions: Question[])
     {
         return `Return a hobby that suits the best a person that responded to the questions below. Your response should contain only the hobby name and nothing else. \r\n`
-            + questions.map(q => `${q.question} ${q.answer}\r\n`)
+            + Prompts.resolveQuestions(questions)
     }
 
     static nextQuestion(questions: Question[])
     {
         return `Your task is to assign me a hobby that is best suited for me. Ask me another question that will help you find me a hobby. Below are my answers for other questions for context. Your response should contain only one question ending with a question mark. \r\n`
-            + questions.map(q => `${q.question} ${q.answer}\r\n`)
+            + Prompts.resolveQuestions(questions)
+    }
+
+    static hobbyRating(questions: Question[], hobby: string)
+    {
+        return `Your task is to rate if hobby "${hobby}" would be fun for a person that answered the questions below. Your response should contain only the rating value ranging from 0 - least fun to 100 - most fun.`
+            + Prompts.resolveQuestions(questions)
+    }
+
+    static resolveQuestions(questions: Question[]): string
+    {
+        return questions.map(q => 
+            `Question: ${q.question}\r\nAnswer: ${q.answer}`
+        ).join("\r\n")
     }
 }

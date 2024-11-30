@@ -63,8 +63,19 @@ export class HobbySession
             throw `Cant rate question of stage ${last.stage}`
 
         last.result = await this.llm.ask(Prompts.hobbyFor(this.questions))
-        last.accuracy = 0.1
 
+        const accuracyRaw = await this.llm.ask(Prompts.hobbyRating(this.questions, last.result))
+
+        let accuracy = +accuracyRaw.trim()
+
+        if(isNaN(accuracy))
+        {
+            console.warn(`NaN accuracy from: ${accuracyRaw}`)
+
+            accuracy = 0
+        }
+
+        last.accuracy = accuracy / 100
         last.stage = "RATED"
 
         // if(last.accuracy > 0)

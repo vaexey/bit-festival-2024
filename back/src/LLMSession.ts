@@ -17,23 +17,42 @@ export class LLMSession
         this.llm = llm;
     }
 
-    async ask(content: string)
+    append(msg: Message)
     {
-        this.messages.push({
+        this.messages.push(msg)
+    }
+
+    appendAll(msgs: Message[])
+    {
+        this.messages = [...this.messages, ...msgs]
+    }
+
+    async ask(content: string, append?: boolean): Promise<Message>
+    {
+        if(append === undefined)
+            append = true
+
+        const msg: Message = {
             content,
             role: "user"
-        })
+        }
 
         const params = {
-            messages: this.messages,
+            messages: [...this.messages, msg],
             model: this.llm.model
         }
 
         const completion = await this.llm.client.chat.completions.create(params)
 
-        this.messages.push(completion.choices[0].message as any as Message);
+        const response = completion.choices[0].message as any as Message
 
-        const response = completion.choices[0].message.content
+        if(append)
+        {
+            this.appendAll([
+                msg,
+                response
+            ])
+        }
 
         return response
     }

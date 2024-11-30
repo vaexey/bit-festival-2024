@@ -18,4 +18,23 @@ export class LLM
     {
         return new LLMSession(this);
     }
+
+    async ask(content: string)
+    {
+        const msg = {
+            content,
+            role: "system"
+        }
+
+        const params = {
+            messages: [msg],
+            model: this.model
+        }
+
+        const completion = await this.client.chat.completions.create(params as any)
+
+        const response = completion.choices[0].message
+
+        return response.content
+    }
 }

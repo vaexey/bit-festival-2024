@@ -1,8 +1,15 @@
 <script>
-let franzl = "ben";
+    import Answer from './answer.svelte';
+    import Question from './question.svelte';
+    import Button from './finishButton.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<p> witam {franzl}</p>
+<style lang="scss">
+    @import './styles/styles.scss'
+</style>
 
+<div class="main">
+    <Question/>
+    <Answer/>
+    <Button/>
+</div>

@@ -9,5 +9,3 @@
     Get result
     </button>
 </div>
-
-

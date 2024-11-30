@@ -8,6 +8,7 @@
     import { onMount } from 'svelte';
     import { type QuestionModel } from '$lib/question'
     import { new_session, get_questions } from '$lib/api';
+    import Spinner from './spinner.svelte';
 
     const send_answer = async (session : string, content : string) => {
         await fetch(`api/answer?session=${session}&content=${content}`);
@@ -19,6 +20,7 @@
     let curr_question : string = $state('');
     let session : string = $state('');
     let content = $state('');
+    let spinner = $state(false);
 
 
     onMount(async () => {
@@ -60,5 +62,6 @@
     <Reply {questionResults}/>
     <ContinueButton/>
     {/if}
+    <Spinner bind:show={spinner}/>
 </div>
 

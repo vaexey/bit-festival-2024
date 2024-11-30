@@ -45,7 +45,9 @@ export class Server
 
             await newSession.loadFirstQuestion()
 
-            res.redirect(`/api/questions?session=${id}`)
+            // res.redirect(`/api/questions?session=${id}`)
+            res.send(id)
+            res.end()
         })
 
         this.app.get("/api/questions", async (req: SesRes, res) => {

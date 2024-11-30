@@ -1,4 +1,5 @@
 .answer-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,10 +27,39 @@
     color : #ffffff;
     resize: none;
     align-items: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow to button */
+
 
     overflow:hidden;
     &:focus {
         border : 4px solid black;
         outline:none;
     }
+}
+
+.answ-button {
+    position: absolute; /* Position the button absolutely within the container */
+    top: 50%; /* Center vertically */
+    left: 86%; /* Center horizontally */
+    width: 10px;
+    transform: translate(-50%, -50%); /* Adjust position to be centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #383838;    
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow to button */
+}
+
+.answ-button:hover {
+    background-color:rgb(143, 143, 143);
+}
+
+.answ-button:active {
+    background-color:rgb(32, 32, 32);
 }

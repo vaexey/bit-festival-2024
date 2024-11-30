@@ -90,7 +90,7 @@
 }
 
 .tiles-container[data-length="8"] {
-    display: flex;    
+    display: block;    
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     gap: 10px;

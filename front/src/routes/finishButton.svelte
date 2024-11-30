@@ -15,5 +15,3 @@
     Get result
     </button>
 </div>
-
-

@@ -5,14 +5,21 @@
     import ContinueButton from './keepAskingButton.svelte';
     import Answer from './answer.svelte';
     import Question from './question.svelte';
+    import Spinner from './spinner.svelte';
     import { onMount } from 'svelte';
     import { type QuestionModel } from '$lib/question'
-    import { new_session, get_questions } from '$lib/api';
+    import { new_session } from '$lib/api';
     type Result = {
         result : string,
         accuracy : number
     };
 
+    export const get_questions = async (session : string) : Promise<QuestionModel[]> => {
+        let res = await fetch(`api/questions?session=${session}`);
+        let body = JSON.parse(await res.text());
+        spinner = false;
+        return body as Promise<QuestionModel[]>;
+    }
     const send_answer = async (session : string, content : string) => {
         curr_question = "Loading...";
         await fetch(`api/answer?session=${session}&content=${content}`);
@@ -32,6 +39,7 @@
     let session : string = $state('');
     let content = $state('');
     let questionResults : string[] = $state([]);
+    let spinner = $state(true);
 
 
     onMount(async () => {
@@ -79,5 +87,6 @@
     <Reply {questionResults}/>
     <ContinueButton/>
     {/if}
+    <Spinner bind:show={spinner}/>
 </div>
 

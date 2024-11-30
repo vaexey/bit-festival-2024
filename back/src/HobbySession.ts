@@ -22,7 +22,7 @@ export class HobbySession
 
     async loadNextQuestion()
     {
-        let question
+        let question = await this.llm.ask(Prompts.nextQuestion(this.questions))
 
         await this.addQuestion(question)
     }
@@ -51,6 +51,8 @@ export class HobbySession
 
         last.answer = answer
         last.stage = "ANSWERED"
+
+        await this.rate()
     }
 
     async rate()
@@ -58,7 +60,7 @@ export class HobbySession
         const last = this.questions[this.questions.length - 1]
 
         if(last.stage != "ANSWERED")
-            throw `Cant answer question of stage ${last.stage}`
+            throw `Cant rate question of stage ${last.stage}`
 
         last.result = await this.llm.ask(Prompts.hobbyFor(this.questions))
         last.accuracy = 0.1
@@ -69,6 +71,6 @@ export class HobbySession
         // {
 
         // }
-        // await this.loadNextQuestion();
+        await this.loadNextQuestion();
     }
 }

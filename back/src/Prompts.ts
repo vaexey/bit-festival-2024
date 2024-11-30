@@ -14,4 +14,10 @@ export class Prompts
         return `Return a hobby that suits the best a person that responded to the questions below. Your response should contain only the hobby name and nothing else. \r\n`
             + questions.map(q => `${q.question} ${q.answer}\r\n`)
     }
+
+    static nextQuestion(questions: Question[])
+    {
+        return `Your task is to assign me a hobby that is best suited for me. Ask me another question that will help you find me a hobby. Below are my answers for other questions for context. Your response should contain only one question ending with a question mark. \r\n`
+            + questions.map(q => `${q.question} ${q.answer}\r\n`)
+    }
 }

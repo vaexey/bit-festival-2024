@@ -43,17 +43,19 @@
     <Question bind:text={curr_question}/>
     <div class="tiles-container" data-length={iterations.length}>
         {#each iterations as iteration}
-        <AnswerTile iteration={iteration}/>
+        <AnswerTile 
+        iteration={iteration}        
+        />
         {/each}
     </div>
-    <Answer bind:value={content}/>
-    <FinishButton 
-    callback={send_answer}
-    session={session} 
-    content={content}
-    bind:questions={questions}
-    bind:curr_question={curr_question}
-    />
+    <Answer 
+        bind:value={content} 
+        callback={send_answer}
+        session={session} 
+        content={content}
+        bind:questions={questions}
+        bind:curr_question={curr_question}/>
+    <FinishButton/>
     {:else}
     <Reply {questionResults}/>
     <ContinueButton/>

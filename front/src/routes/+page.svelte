@@ -7,7 +7,11 @@
     import ContinueButton from './keepAskingButton.svelte';
 
     const iterations = Array.from({ length: 9 }, (_, i) => i + 1);
-    let questionResults =["siema","czesc"];
+    // let questionResults =["siema","czesc"];
+    /**
+     * @type {string | any[]}
+     */
+    let questionResults = []
 </script>
 
 <style lang="scss">
@@ -17,12 +21,12 @@
 <div class="main">
     {#if questionResults.length === 0}
     <Question/>
+    <Answer/>
     <div class="tiles-container" data-length={iterations.length}>
         {#each iterations as iteration}
         <AnswerTile iteration={iteration}/>
         {/each}
     </div>
-    <Answer/>    
     <FinishButton/>
     {:else}
     <Reply {questionResults}/>

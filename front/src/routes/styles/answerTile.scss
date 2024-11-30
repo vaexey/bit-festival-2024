@@ -2,24 +2,52 @@
     //display: flex;
     //text-align: center;
     //width: 100%;
-    height: 80px;
-    width: 30%;
-    margin: 10px;
-    background-color: #b7b7b7;
-    border-radius: 12px;
-    border: 2px solid rgb(104, 104, 104);
-    color: white;
+    height: 150px;
+    width: 150px;
+    margin: 20px;
+    background-color: #ffffff;
+    // border-radius: 12px;
+    border: none;
+    // border: 2px solid rgb(104, 104, 104);
+    color: black;
     font-size: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);     
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+
+    transform: scale(1);
+
+    transition: background-color 150ms ease-out,
+        box-shadow 150ms ease-out,
+        transform 150ms ease-out;
 }
 
 .tile-button:hover {
-    background-color: #cacaca;
+    background-color: rgb(242, 242, 242);
+    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.5);
+
+    transform: scale(1.01);
+
     cursor: pointer;
 }
 
-.tile-button:active {
-    background-color:rgb(104, 104, 104);    
+.tile-button:active, .tile-button.active {
+    background-color:rgb(198, 220, 233);
     cursor: pointer;
+
+    animation: swivel 1s linear 0s 1;
+}
+
+@keyframes swivel {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-10deg); }
+    30% { transform: rotate(10deg); }
+    45% { transform: rotate(-7deg); }
+    55% { transform: rotate(7deg); }
+    59% { transform: rotate(-5deg); }
+    67% { transform: rotate(-5deg); }
+    70% { transform: rotate(0deg); }
+    // 72% { transform: rotate(-4deg); }
+    // 76% { transform: rotate(4deg); }
+
+    100% { transform: rotate(0deg); }
 }

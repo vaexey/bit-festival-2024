@@ -3,5 +3,6 @@
 </style>
 
 <div class="question-container">
-    Question here
+    Do you enjoy spending time outdoors or do you prefer doing things indoors,
+    surrounded by books and technology?
 </div>

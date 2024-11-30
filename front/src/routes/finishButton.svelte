@@ -3,5 +3,5 @@
 </style>
 
 <div class="button-container">
-    <button class="result-button">Get result</button>
+    <button class="result-button">Find me a new hobby</button>
 </div>

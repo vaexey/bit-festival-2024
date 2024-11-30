@@ -1,6 +1,5 @@
 <div class="answer-container">
-    <textarea class="answ-input">
-    </textarea>
+    <textarea class="answ-input"></textarea>
     <button class="answ-button">➤</button>
 </div>
 

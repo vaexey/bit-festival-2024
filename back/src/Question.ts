@@ -14,6 +14,7 @@ export interface Question
 
     // Stage RATED
     result?: string
+    resultEmoji?: string
     accuracy?: number
 }
 

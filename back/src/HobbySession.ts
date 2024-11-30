@@ -75,7 +75,12 @@ export class HobbySession
             accuracy = 0
         }
 
-        last.accuracy = accuracy / 100
+        const trustFactor = 1-Math.exp(-0.2*this.questions.length)
+
+        accuracy /= 100
+        accuracy *= trustFactor
+
+        last.accuracy = accuracy
         last.stage = "RATED"
 
         // if(last.accuracy > 0)
@@ -83,5 +88,21 @@ export class HobbySession
 
         // }
         await this.loadNextQuestion();
+    }
+
+    getBestResults(): { result: string, accuracy: number }[]
+    {
+        let results = this.questions
+            .filter(q => q.stage == "RATED")
+            .map(q => {
+                return {
+                    result: q.result,
+                    accuracy: q.accuracy
+                }
+            })
+
+        results.sort((a,b) => b.accuracy - a.accuracy)
+
+        return results
     }
 }

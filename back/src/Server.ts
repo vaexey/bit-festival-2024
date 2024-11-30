@@ -82,6 +82,24 @@ export class Server
             res.sendStatus(200)
             return
         })
+
+        this.app.get("/api/results", async (req: SesRes, res) => {
+            if(!req.session)
+            {
+                res.sendStatus(401);
+                return;
+            }
+
+            res.send(
+                JSON.stringify(
+                    req.session.getBestResults(),
+                    null,
+                    4
+                )
+            )
+
+            return
+        })
     }
 
     listen()

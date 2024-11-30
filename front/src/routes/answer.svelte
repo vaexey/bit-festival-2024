@@ -1,5 +1,6 @@
 <div class="answer-container">
-    jodler base arrena
+    <textarea class="answ-input">
+    </textarea>
 </div>
 
 <style lang="scss">

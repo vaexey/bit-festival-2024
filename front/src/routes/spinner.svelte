@@ -43,6 +43,7 @@ $alphabg: 0.4;
 .spinner.hide
 {
     opacity: 0;
+    pointer-events: none;
 }
 
 .circle
@@ -80,6 +81,7 @@ $alphabg: 0.4;
 .loading.hide
 {
     opacity: 0;
+    pointer-events: none;
 }
 
 @keyframes rotateBg

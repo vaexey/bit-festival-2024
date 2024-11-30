@@ -1,0 +1,28 @@
+.continueButton-container{
+    display: flex;
+    //border: 2px solid black;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-weight:400;
+}
+
+.continueButton-button{
+    height: 60px;
+    width: 70%;
+    background-color: #383838;
+    color: white;
+    font-size: 25px;
+    border-radius: 12px;
+    border: 2px solid rgb(104, 104, 104);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); 
+
+}
+
+.continueButton-button:hover{
+    background-color:rgb(143, 143, 143);
+    cursor: pointer;
+}
+
+.continueButton-button:active{
+    background-color:rgb(32, 32, 32);
+}

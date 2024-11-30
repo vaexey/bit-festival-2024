@@ -2,7 +2,10 @@
     @import './styles/question.scss'
 </style>
 
+<script>
+    export let text;
+</script>
+
 <div class="question-container">
-    Do you enjoy spending time outdoors or do you prefer doing things indoors,
-    surrounded by books and technology?
+    {text}
 </div>

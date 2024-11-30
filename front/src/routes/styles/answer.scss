@@ -1,6 +1,35 @@
-.answer {
-    background-color: red;
-    &:hover {
-        background-color: blue;
+.answer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    // pretty stuff
+    border: 2px solid red;
+    // temp
+    height:15%;
+    padding : 20px;
+}
+.answ-input {
+    text-align: center;
+    text-decoration: none;
+    // templ
+    width: 80%;
+    height: 30%;
+    padding: 30px;
+    margin: 10px;
+
+    margin:auto;
+    font-size:30px;
+    //pretty stuff
+    background-color: gray;
+    border : 4px solid black;
+    border-radius: 35px;
+    color : white;
+
+    overflow:hidden;
+    &:focus {
+        border : 4px solid black;
+        outline:none;
     }
 }

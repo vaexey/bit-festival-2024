@@ -43,6 +43,12 @@ export class HobbySession
             return o
         }))
 
+        shortOptions = await Promise.all(shortOptions.map(async (o) => {
+            const emoji = await this.llm.ask(Prompts.emojiFrom(o))
+
+            return `${emoji}${o}`
+        }))
+
         this.questions.push({
             stage: "ASKED",
             question,

@@ -20,7 +20,7 @@
     class="answ-input">
     </textarea>
     <button class="answ-button" on:click={
-    () => callback(session, content, questions, curr_question)}>➤</button>
-</div>
+        () => callback(session, content, questions, curr_question)}>➤</button>
+    </div>
 
 

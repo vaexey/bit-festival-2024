@@ -11,6 +11,8 @@
         margin: 0;
 
         height: 100vh;
+
+        user-select: none;
     }
 }
 
@@ -31,74 +33,89 @@
     display: grid;
     gap: 10px;
     width: 100%;
-    // border: 2px solid green;
+    //border: 2px solid green;
     padding: 10px;
     box-sizing: border-box;
 }
 
 .tiles-container[data-length="1"] {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: row;   
+    flex-wrap: wrap; 
+    //gap: 10px;
     width: 100%;
 }
 
 .tiles-container[data-length="2"] {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap; 
     justify-content: center;
     width: 100%;
 }
 
 .tiles-container[data-length="3"] {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap; 
     justify-content: center;
     width: 100%;
 }
 
 .tiles-container[data-length="4"] {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap; 
     justify-content: center;
     width: 100%;
 }
 
 .tiles-container[data-length="5"] {
-    display: block;    
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap;    
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 10px;
+    //gap: 10px;
     width: 100%;
 }
 
 .tiles-container[data-length="6"] {
-    display: block;    
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap;   
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 10px;
+    //gap: 10px;
     width: 100%;
 }
 
 .tiles-container[data-length="7"] {
-    display: block;    
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap;     
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 10px;
+    //gap: 10px;
     width: 100%;
 }
 
 .tiles-container[data-length="8"] {
-    display: block;    
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap;     
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 10px;
+    //gap: 10px;
     width: 100%;
 }
 
 .tiles-container[data-length="9"] {
-    display: block;    
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: wrap; 
     text-align: center;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 10px;
+    //gap: 10px;
     width: 100%;
 }

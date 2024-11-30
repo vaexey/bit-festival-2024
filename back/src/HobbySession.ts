@@ -29,10 +29,19 @@ export class HobbySession
 
     async addQuestion(question: string)
     {
+        let sentences = question.split(/[\.:]+/)
+
+        if(sentences.length > 1)
+        {
+            question = sentences[sentences.length - 1].trim()
+        }
+
         let optionsRaw = await this.llm.ask(Prompts.optionsFor(question))
 
         let inner = optionsRaw.split("[")[1].split("]")[0]
         let options = inner.split(";").map(x => x.trim())
+
+        options = options.slice(0, 8)
 
         let shortOptions = await Promise.all(options.map(o => {
             if(o.split(" ").length > 3)
@@ -43,10 +52,18 @@ export class HobbySession
             return o
         }))
 
+        shortOptions = shortOptions.map(o => {
+            let str = o.replaceAll(/[^a-zA-Z ]/g, "").trim().toLowerCase().split("")
+            
+            str[0] = str[0].toUpperCase()
+
+            return str.join("")
+        })
+
         shortOptions = await Promise.all(shortOptions.map(async (o) => {
             const emoji = await this.llm.ask(Prompts.emojiFrom(o))
 
-            return `${emoji}${o}`
+            return `${emoji} ${o}`
         }))
 
         this.questions.push({
@@ -78,7 +95,8 @@ export class HobbySession
             throw `Cant rate question of stage ${last.stage}`
 
         last.result = await this.llm.ask(Prompts.hobbyFor(this.questions))
-
+        last.resultEmoji = await this.llm.ask(Prompts.emojiFrom(last.result))
+        
         const accuracyRaw = await this.llm.ask(Prompts.hobbyRating(this.questions, last.result))
 
         let accuracy = +accuracyRaw.trim()
@@ -112,7 +130,8 @@ export class HobbySession
             .map(q => {
                 return {
                     result: q.result,
-                    accuracy: q.accuracy
+                    emoji: q.resultEmoji,
+                    accuracy: q.accuracy,
                 }
             })
 

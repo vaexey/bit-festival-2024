@@ -36,6 +36,9 @@ export class HobbySession
             question = sentences[sentences.length - 1].trim()
         }
 
+        question = question.charAt(0).toUpperCase()
+            + question.slice(1)
+
         let optionsRaw = await this.llm.ask(Prompts.optionsFor(question))
 
         let inner = optionsRaw.split("[")[1].split("]")[0]
@@ -116,10 +119,6 @@ export class HobbySession
         last.accuracy = accuracy
         last.stage = "RATED"
 
-        // if(last.accuracy > 0)
-        // {
-
-        // }
         await this.loadNextQuestion();
     }
 

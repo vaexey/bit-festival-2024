@@ -1,3 +1,2 @@
-# bit 2024
-
-jodd.ly
+# jodd.ly
+Wyszukiwarka hobby z pomocą LLM

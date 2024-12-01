@@ -28,13 +28,20 @@
     // color : #8c8cff;
     resize: none;
     align-items: center;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow to button */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Add shadow to button */    
 
 
     overflow:hidden;
     &:focus {
         border : 2px solid #8c8cff;
         outline:none;
+    }
+    &:focus::placeholder {
+        opacity: 0;
+    }
+
+    &::placeholder {
+        opacity: 0.3;
     }
 }
 

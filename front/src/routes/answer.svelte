@@ -16,7 +16,8 @@
 <div class="answer-container">
     <textarea 
     bind:value={value}
-    class="answ-input">
+    class="answ-input"
+    placeholder="If you've got a different answer, type it here">
     </textarea>
     <button class="answ-button" on:click={
         () => callback(session, content, questions, curr_question)}>➤</button>

@@ -22,11 +22,13 @@
         console.log(theme);
         return body as Promise<QuestionModel[]>;
     }
-    const send_answer = async (session : string, content : string) => {
+    const send_answer = async (session : string, contents : string) => {
         curr_question = "Loading...";
-        await fetch(`api/answer?session=${session}&content=${content}`);
+        content = ""
+        await fetch(`api/answer?session=${session}&content=${contents}`);
         questions = await get_questions(session);
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
+
     };
     const reset = async () => {
         questionResults = [];

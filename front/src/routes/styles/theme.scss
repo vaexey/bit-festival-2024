@@ -1,0 +1,29 @@
+.theme-container {
+    position: absolute;
+    top:0;
+    right:0;
+    margin : 40px;
+    background-color : black;
+    width:70px;
+    height:70px;
+
+    display : flex;
+    justify-content: center;
+    align-content: center;
+
+    background:none;
+
+}
+
+.theme {
+    align-content : center;
+    justify-content : center;
+    font-size:100px;
+    cursor:pointer;
+    &:hover {
+        margin-top :10px;
+        transition: margin 0.5 ease-in-out;
+    }
+    margin-bottom:10px;
+    transition: margin 0.2s ease-in-out;
+}

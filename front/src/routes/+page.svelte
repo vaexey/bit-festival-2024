@@ -64,6 +64,10 @@
 
 <div class="main">
 <Theme bind:theme={theme}/>
+<div class="logo">
+    <b>jodd.ly</b>&nbsp;&nbsp;find your new hobby
+</div>
+<div style="width: 1px;height: 40px;"></div>
     {#if questionResults.length === 0}
     <Question bind:text={curr_question}/>
     {#if questions.length > 0 && questions[questions.length - 1].shortOptions !== undefined}

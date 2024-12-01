@@ -8,7 +8,7 @@
 </script>
 
 <div class="theme-container">
-    <div class="theme" on:click={() => {theme=!theme}}>
+    <div class={theme ? "theme" : "theme dark"} on:click={() => {theme=!theme}}>
         {theme ?  '☀': '☽'}
     </div>
 </div>

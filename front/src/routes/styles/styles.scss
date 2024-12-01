@@ -6,7 +6,7 @@
         font-weight: 300;
         font-size: 16px;
         color: #ffffff;
-        background: radial-gradient(circle at 50% 100%, rgb(238, 238, 238) 0%, rgb(174, 174, 255) 100%);
+        background: radial-gradient(circle at 50% 100%, rgb(238, 238, 238) 0%, rgb(160, 160, 195) 100%);
         //border: 2px solid green;
         margin: 0;
 
@@ -40,6 +40,30 @@
 
     //gap: 10px;
     width: 100%;
+}
+
+.logo
+{
+    height: 75px;
+    background-color: rgba(255, 255, 255, 0.685);
+
+    position: absolute;
+    top: 0;
+
+    width: 90vw;
+    left: 5vw;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 0px 0px 20px 0px 0px 20px rgb(0 0 0 / 31%);
+
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: monospace;
+
+    font-size: 1.3em;
 }
 
 // .tiles-container[data-length="1"] {

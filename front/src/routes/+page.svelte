@@ -26,6 +26,12 @@
         questions = await get_questions(session);
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     };
+    const reset = async () => {
+        // spinner = true;
+        questionResults = [];
+        // questions = await get_questions(session);
+        // curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
+    }
 
     export const get_results = async (session : string) => {
         let res = await fetch(`/api/results?session=${session}`);
@@ -85,7 +91,7 @@
         session={session}/>
     {:else}
     <Reply {questionResults}/>
-    <ContinueButton/>
+    <ContinueButton callback={reset}/>
     {/if}
     <Spinner bind:show={spinner}/>
 </div>

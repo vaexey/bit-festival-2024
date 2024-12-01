@@ -63,18 +63,20 @@
 </style>
 
 <div class="main">
+<Theme bind:theme={theme}/>
     {#if questionResults.length === 0}
     <Question bind:text={curr_question}/>
     {#if questions.length > 0 && questions[questions.length - 1].shortOptions !== undefined}
 
     <div class="tiles-container" data-length={questions[questions.length - 1].shortOptions.length}>
-            {#each questions[questions.length - 1].shortOptions as iteration}
+            {#each questions[questions.length - 1].shortOptions as iteration, i}
                 <AnswerTile 
                 iteration={iteration}
                 callback={send_answer}
                 session={session}
                 bind:questions={questions}
                 bind:curr_questions={curr_question}
+                tooltip={questions[questions.length - 1].options[i]}
                 />
             {/each}
     </div>
@@ -96,4 +98,3 @@
     <Spinner bind:show={spinner}/>
 </div>
 
-<Theme bind:theme={theme}/>

@@ -7,6 +7,7 @@
     import type { QuestionModel } from "$lib/question";  
     export let callback = (session : string, content : string, questions : QuestionModel[], curr_question : string) => {};
     export let session;
+    export let tooltip;
 
     export let questions : QuestionModel[] = [];
     export let curr_question : string;
@@ -17,7 +18,7 @@
         () => callback(session, iteration, questions, curr_question)}>{iteration}
     <div class="tip">
         <div class="text">
-            Tooltip ooltip ooltip ooltip ooltip ooltip ooltip ooltip ooltip 
+            {tooltip}
         </div>
     </div>
 </div>

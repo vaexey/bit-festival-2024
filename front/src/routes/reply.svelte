@@ -6,10 +6,9 @@
     export let questionResults;  
 </script>
 
+<div class="title">Best hobbies for you:</div>
 <div class="reply-container">
-    <ul class="hobbylist">
-        {#each questionResults as questionResult}
-            <li>{questionResult}</li>
-        {/each}
-    </ul>
+    {#each questionResults as questionResult}
+            <div>{questionResult}</div>
+    {/each}
 </div>

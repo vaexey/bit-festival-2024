@@ -6,7 +6,7 @@
         font-weight: 300;
         font-size: 16px;
         color: #ffffff;
-        background: radial-gradient(circle at 50% 100%, rgb(238, 238, 238) 0%, rgb(160, 160, 195) 100%);
+        background: radial-gradient(circle at 50% 100%, var(--bg-1) 0%, var(--bg-2) 100%);
         //border: 2px solid green;
         margin: 0;
 
@@ -14,6 +14,22 @@
 
         user-select: none;
     }
+}
+
+:root
+{
+    --bg-1: rgb(238, 238, 238);
+    --bg-2: rgb(160, 160, 195);
+    --fg: black;
+    --tile: white;
+}
+
+.darkmode
+{
+    --bg-1: rgb(9, 9, 9);
+    --bg-2: rgb(43, 43, 43);
+    --fg: white;
+    --tile: rgb(63, 63, 63);
 }
 
 .main {

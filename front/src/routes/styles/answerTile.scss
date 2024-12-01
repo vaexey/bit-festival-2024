@@ -6,11 +6,11 @@
     height: 150px;
     width: 150px;
     margin: 20px;
-    background-color: #ffffff;
+    background-color: var(--tile);
     // border-radius: 12px;
     border: none;
     // border: 2px solid rgb(104, 104, 104);
-    color: black;
+    color: var(--fg);
     font-size: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);

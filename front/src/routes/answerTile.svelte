@@ -14,4 +14,10 @@
 </script>
 
 <div class="tile-button" on:click={
-        () => callback(session, iteration, questions, curr_question)}>{iteration}</div>
+        () => callback(session, iteration, questions, curr_question)}>{iteration}
+    <div class="tip">
+        <div class="text">
+            Tooltip ooltip ooltip ooltip ooltip ooltip ooltip ooltip ooltip 
+        </div>
+    </div>
+</div>

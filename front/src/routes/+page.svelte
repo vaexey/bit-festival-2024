@@ -6,6 +6,7 @@
     import Answer from './answer.svelte';
     import Question from './question.svelte';
     import Spinner from './spinner.svelte';
+    import Theme from './theme.svelte';
     import { onMount } from 'svelte';
     import { type QuestionModel } from '$lib/question'
     import { new_session } from '$lib/api';
@@ -18,6 +19,7 @@
         let res = await fetch(`api/questions?session=${session}`);
         let body = JSON.parse(await res.text());
         spinner = false;
+        console.log(theme);
         return body as Promise<QuestionModel[]>;
     }
     const send_answer = async (session : string, content : string) => {
@@ -27,10 +29,7 @@
         curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     };
     const reset = async () => {
-        // spinner = true;
         questionResults = [];
-        // questions = await get_questions(session);
-        // curr_question = questions.length > 0 ? questions[questions.length- 1].question : "...";
     }
 
     export const get_results = async (session : string) => {
@@ -46,6 +45,7 @@
     let content = $state('');
     let questionResults : string[] = $state([]);
     let spinner = $state(true);
+    let theme = $state(true);
 
 
     onMount(async () => {
@@ -63,18 +63,20 @@
 </style>
 
 <div class="main">
+<Theme bind:theme={theme}/>
     {#if questionResults.length === 0}
     <Question bind:text={curr_question}/>
     {#if questions.length > 0 && questions[questions.length - 1].shortOptions !== undefined}
 
     <div class="tiles-container" data-length={questions[questions.length - 1].shortOptions.length}>
-            {#each questions[questions.length - 1].shortOptions as iteration}
+            {#each questions[questions.length - 1].shortOptions as iteration, i}
                 <AnswerTile 
                 iteration={iteration}
                 callback={send_answer}
                 session={session}
                 bind:questions={questions}
                 bind:curr_questions={curr_question}
+                tooltip={questions[questions.length - 1].options[i]}
                 />
             {/each}
     </div>

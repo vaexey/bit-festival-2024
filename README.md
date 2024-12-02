@@ -45,7 +45,7 @@ JSON should like this
 }
 ```
 
-And execute this commands
+Execute this commands
 
 ```
 cd .\back\src\
@@ -69,4 +69,4 @@ npm run dev -- --open
 
 ## License
 
-The software is licensed under [MIT NON-AI License]()
+The software is licensed under [MIT NON-AI License](https://github.com/vaexey/bit-festival-2024/blob/master/LICENSE)
